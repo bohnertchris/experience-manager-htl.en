@@ -1,12 +1,9 @@
 ---
-cloud: experience-cloud
-product: experience manager
-sub-product: experience manager htl
-archetype: admin
-user-guide-title: Experience Manager HTL Help
+sub-product: Adobe Experience Manager HTL
+user-guide-title: Adobe Experience Manager HTL
 ---
 
-# Experience Manager HTL Help {#using}
+# Adobe Experience Manager HTL Help {#using}
 
 + [Overview](overview.md)
 + Getting Started{#getting-started}

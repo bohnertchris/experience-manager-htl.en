@@ -1,15 +1,6 @@
 ---
 title: HTL Expression Language
-seo-title: HTL Expression Language
 description: The HTML Template Language uses an expression language to access the data structures that provide the dynamic elements of the HTML output.
-seo-description: The HTML Template Language uses an expression language to access the data structures that provide the dynamic elements of the HTML output. 
-uuid: 38b4a259-03b5-4847-91c6-e20377600070
-contentOwner: User
-products: SG_EXPERIENCEMANAGER/HTL
-topic-tags: html-template-language
-content-type: reference
-discoiquuid: 9ba37ca0-f318-48b0-a791-a944a72502ed
-mwpw-migration-script-version: 2017-10-12T21 46 58.665-0400
 ---
 
 # HTL Expression Language {#htl-expression-language}
@@ -23,7 +14,7 @@ The HTML Template Language uses an expression language to access the data struct
 </h1>
 ```
 
-Expressions can be escaped by prepended by a **`\`** character, for instance **`\${test}`** will render **`${test}`**.
+Expressions can be escaped by prepended by a `\` character, for instance `\${test}` will render `${test}`.
 
 >[!NOTE]
 >
@@ -50,13 +41,13 @@ The simpler dot notation should be preferred for most cases, and the brackets no
 
 The accessed properties can be functions, however passing arguments is not supported, so only functions that don't expect arguments can accessed, like getters. This is a desired limitation, which is intended to reduce the amount of logic embedded into expressions. If needed, the [`data-sly-use`](block-statements.md#use) statement can be used to pass parameters to the logic.
 
-Also shown in the example above is that Java getter functions, like `getTitle()`, can be accessed without prepending the **`get`**, and by lowering the case of the character that follows.
+Also shown in the example above is that Java getter functions, like `getTitle()`, can be accessed without prepending the `get`, and by lowering the case of the character that follows.
 
 ### Valid Indentifier Characters {#valid-indentifier-characters}
 
-The names of variables, called identifiers, conform to certain rules. They must start with a letter (**`A`**-**`Z`** and **`a`**-**`z`**), or an underscore (**`_`**), and subsequent characters can also be digits (**`0`**-**`9`**) or colon (**`:`**). Unicode letters such as **`å`** and **`ü`** cannot be used in identifiers.
+The names of variables, called identifiers, conform to certain rules. They must start with a letter (`A`-`Z` and `a`-`z`), or an underscore (`_`), and subsequent characters can also be digits (`0`-`9`) or colon (`:`). Unicode letters such as `å` and `ü` cannot be used in identifiers.
 
-Given that the colon (**:**) character is common in AEM property names, it is convenient that it is a valid identifier character:
+Given that the colon (`:`) character is common in AEM property names, it is convenient that it is a valid identifier character:
 
 `${properties.jcr:title}`
 
@@ -66,27 +57,11 @@ The bracket notation can be used to access properties that contain invalid ident
 
 ### Accessing Members Dynamically {#accessing-members-dynamically}
 
-<!-- 
-
-Comment Type: draft
-
-<p>TODO: add description</p>
-
- -->
-
 ```xml
 ${properties[myVar]}
 ```
 
 ### Permissive Handling of Null Values {#permissive-handling-of-null-values}
-
-<!-- 
-
-Comment Type: draft
-
-<p>TODO: add description</p>
-
- -->
 
 ```xml
 ${currentPage.lastModified.time.toString}
@@ -98,7 +73,7 @@ A literal is a notation for representing a fixed value.
 
 ### Boolean {#boolean}
 
-Boolean represents a logical entity and can have two values: **`true`**, and **`false`**.
+Boolean represents a logical entity and can have two values: `true`, and `false`.
 
 `${true} ${false}`
 
@@ -116,19 +91,19 @@ They represent textual data, and can be single or double quoted:
 
 In addition to ordinary characters, following special characters can be used:
 
-* **`\\`** Backslash character
-* **`\'`** Single quote (or apostrophe)
-* **`\"`** Double quote
-* **`\t`** Tabulation
-* **`\n`** New line
-* **`\r`** Carriage return
-* **`\f`** Form feed
-* **`\b`** Backspace
+* `\\` Backslash character
+* `\'` Single quote (or apostrophe)
+* `\"` Double quote
+* `\t` Tab
+* `\n` New line
+* `\r` Carriage return
+* `\f` Form feed
+* `\b` Backspace
 * `\uXXXX` The Unicode character specified by the four hexadecimal digits XXXX.  
   Some useful unicode escape sequences are:
 
-  * **\u0022** for **"**
-  * **\u0027** for **'**
+  * `\u0022` for `"`
+  * `\u0027` for `'`
 
 For characters not listed above, preceding a backslash caracter will display an error.
 
@@ -150,14 +125,6 @@ which will result in following output, because HTL will apply context-specific e
 
 An array is an ordered set of values that can be referred to with a name and an index. The types of its elements can be mixed.
 
-<!-- 
-
-Comment Type: draft
-
-<p>TODO: add description</p>
-
- -->
-
 ```xml
 ${[1,2,3,4]}
 ${myArray[2]}
@@ -177,11 +144,11 @@ Arrays are useful to provide a list of values from the template.
 
 These operators are typically used with Boolean values, however, like in JavaScript, they actually return the value of one of the specified operands, so when used with non-Boolean values, they may return a non-Boolean value.
 
-If a value can be converted to **`true`**, the value is so-called truthy. If a value can be converted to **`false`**, the value is so-called falsy. Values that can be converted to **`false`** are: undefined variables, null values, the number zero, and empty strings.
+If a value can be converted to `true`, the value is so-called truthy. If a value can be converted to `false`, the value is so-called falsy. Values that can be converted to `false` are undefined variables, null values, the number zero, and empty strings.
 
 #### Logical NOT {#logical-not}
 
-**`${!myVar}`** returns **`false`** if its single operand can be converted to `true`; otherwise, returns **`true`**.
+`${!myVar}` returns `false` if its single operand can be converted to `true`; otherwise, it returns `true`.
 
 This can for instance be used to invert a test condition, like displaying an element only if there are no child pages:
 
@@ -191,7 +158,7 @@ This can for instance be used to invert a test condition, like displaying an ele
 
 #### Logical AND {#logical-and}
 
-**`${varOne && varTwo}`** returns `varOne` if it is falsy; otherwise, returns **varTwo**.
+`${varOne && varTwo}` returns `varOne` if it is falsy; otherwise, it returns `varTwo`.
 
 This operator can be used to test two conditions at once, like verifying the existence of two properties:
 
@@ -202,7 +169,7 @@ This operator can be used to test two conditions at once, like verifying the exi
 </div>
 ```
 
-The logical AND operator can also be used to conditionally display HTML attributes, because HTL removes attributes with values set dynamically that evaluate to false, or to an empty string. So in the example below, the **`class`** attribute is only shown if **`logic.showClass`** is truthy and if **`logic.className`** exists and is not empty:
+The logical AND operator can also be used to conditionally display HTML attributes, because HTL removes attributes with values set dynamically that evaluate to false, or to an empty string. So in the example below, the `class` attribute is only shown if `logic.showClass` is truthy and if `logic.className` exists and is not empty:
 
 ```xml
 <div class="${logic.showClass && logic.className}">...</div>
@@ -210,7 +177,7 @@ The logical AND operator can also be used to conditionally display HTML attribut
 
 #### Logical OR {#logical-or}
 
-**`${varOne || varTwo}`** returns **varOne** if it is truthy; otherwise, returns **varTwo**.
+`${varOne || varTwo}` returns `varOne` if it is truthy; otherwise, it returns `varTwo`.
 
 This operator can be used to test if one of two conditions apply, like verifying the existence of at least one property:
 
@@ -228,7 +195,7 @@ conditionally display HTML attributes, because HTL removes attributes with value
 
 ### Conditional (ternary) Operator {#conditional-ternary-operator}
 
-**`${varCondition ? varOne : varTwo}`** returns **`varOne`** if **`varCondition`** is truthy; otherwise it returns **`varTwo`**.
+`${varCondition ? varOne : varTwo}` returns `varOne` if `varCondition` is truthy; otherwise it returns `varTwo`.
 
 This operator can typically be used to define conditions within expressions, like displaying a different message based on the status of the page:
 
@@ -248,43 +215,34 @@ The equality and inequality operators only support operands that are of identica
 
 * Strings are equal when they have the same sequence of characters.
 * Numbers are equal when they have the same value
-* Booleans are equal if both are **`true`** or both are **`false`**.
-
+* Booleans are equal if both are `true` or both are `false`.
 * Null or undefined variables are equal to themselves and to each other.
 
-**`${varOne == varTwo}`** returns **`true`** if **`varOne`** and **`varTwo`** are equal.
+`${varOne == varTwo}` returns `true` if `varOne` and `varTwo` are equal.
 
-**`${varOne != varTwo}`** returns **`true`** if **`varOne`** and **`varTwo`** are not equal.
+`${varOne != varTwo}` returns `true` if `varOne` and `varTwo` are not equal.
 
 The relational operators only support operands that are numbers. For all other types, an error is displayed.
 
-**`${varOne > varTwo}`** returns **`true`** if **`varOne`** is greater than **`varTwo`**.
+`${varOne > varTwo}` returns `true` if `varOne` is greater than `varTwo`.
 
-**`${varOne < varTwo}`** returns **`true`** if **`varOne`** is smaller than **`varTwo`**.
+`${varOne < varTwo}` returns `true` if `varOne` is smaller than `varTwo`.
 
-**`${varOne >= varTwo}`** returns **`true`** if **`varOne`** is greater or equal to **`varTwo`**.
+`${varOne >= varTwo}` returns `true` if `varOne` is greater or equal to `varTwo`.
 
-**`${varOne <= varTwo}`** returns **`true`** if **`varOne`** is smaller or equal to **`varTwo`**.
+`${varOne <= varTwo}` returns `true` if `varOne` is smaller or equal to `varTwo`.
 
 ### Grouping parentheses {#grouping-parentheses}
 
-The grouping operator **`(`** **`)`** controls the precedence of evaluation in expressions.
+The grouping operator `()` controls the precedence of evaluation in expressions.
 
 `${varOne && (varTwo || varThree)}`
 
 ## Options {#options}
 
-<!-- 
-
-Comment Type: draft
-
-<p>TODO: review text below.</p>
-
- -->
-
 Expression options can act on the expression and modify it, or serve as parameters when used in conjunction with block statements.
 
-Everything after the **`@`** is an option:
+Everything after the `@` is an option:
 
 ```xml
 ${myVar @ optOne}
@@ -333,7 +291,7 @@ The hint option can be used to provide a comment for translators, specifying the
 ${'Page' @ i18n, hint='Translation Hint'}
 ```
 
-The default source for the language is 'resource', meaning that the text gets translated to the same language as the content. This can be changed to 'user', meaning that the language is taken from the browser locale or from the locale of the logged-in user:
+The default source for the language is `resource`, meaning that the text gets translated to the same language as the content. This can be changed to `user`, meaning that the language is taken from the browser locale or from the locale of the logged-in user:
 
 ```xml
 ${'Page' @ i18n, source='user'}
@@ -363,11 +321,17 @@ ${['one', 'two'] @ join='; '}
 
 ### Display Context {#display-context}
 
-The display context of a HTL expression refers to its location within the structure of the HTML page. For example, if the expression appears in place that would produce a text node once rendered, then it is said to be in a **`text`** context. If it is found within the value of an attribute, then it is said to be in an **`attribute`** context, and so forth.
+The display context of a HTL expression refers to its location within the structure of the HTML page. For example, if the expression appears in place that would produce a text node once rendered, then it is said to be in a `text` context. If it is found within the value of an attribute, then it is said to be in an `attribute` context, and so forth.
 
 With the exception of script (JS) and style (CSS) contexts, HTL will automatically detect the context of expressions and escape them appropriately, to prevent XSS security problems. In the case of scripts and CSS, the desired context behavior must be explicitly set. Additionally, the context behavior can also be explicitly set in any other case where an override of the automatic behavior is desired.
 
-Here we have three variables in three different contexts: **`properties.link`** ( `uri` context), **`properties.title`** (**`attribute`** context) and **`properties.text`**(**`text`** context). HTL will escape each of these differently in accordance with the security requirements of their respective contexts. No explicit context setting is required in normal cases such as this one:
+Here we have three variables in three different contexts:
+
+* `properties.link` ( `uri` context)
+* `properties.title` (`attribute` context)
+* `properties.text` (`text` context)
+
+HTL will escape each of these differently in accordance with the security requirements of their respective contexts. No explicit context setting is required in normal cases such as this one:
 
 ```xml
 <a href="${properties.link}" title="${properties.title}">${properties.text}</a>
@@ -401,18 +365,17 @@ Escaping and XSS protection can also be turned off:
 
 |Context|When to use|What it does|
 |--- |--- |--- |
-|text|Default for content inside elements|Encodes all HTML special characters.|
-|html|To safely output markup|Filters HTML to meet the AntiSamy policy rules, removing what doesn't match the rules.|
-|attribute|Default for attribute values|Encodes all HTML special characters.|
-|uri|To display links and paths Default for href and src attribute values|Validates URI for writing as an href or src attribute value, outputs nothing if validation fails.|
-|number|To display numbers|Validates URI for containing an integer, outputs zero if validation fails.|
-|attributeName|Default for data-sly-attribute when setting attribute names|Validates the attribute name, outputs nothing if validation fails.|
-|elementName|Default for data-sly-element|Validates the element name, outputs nothing if validation fails.|
-|scriptToken|For JS identifiers, literal numbers, or literal strings|Validates the JavaScript token, outputs nothing if validation fails.|
-|scriptString|Within JS strings|Encodes characters that would break out of the string.|
-|scriptComment|Within JS comments|Validates the JavaScript comment, outputs nothing if validation fails.|
-|styleToken|For CSS identifiers, numbers, dimensions, strings, hex colours or functions.|Validates the CSS token, outputs nothing if validation fails.|
-|styleString|Within CSS strings|Encodes characters that would break out of the string.|
-|styleComment|Within CSS comments|Validates the CSS comment, outputs nothing if validation fails.|
-|unsafe|Only if none of the above does the job|Disables escaping and XSS protection completely.|
-
+|`text`|Default for content inside elements|Encodes all HTML special characters.|
+|`html`|To safely output markup|Filters HTML to meet the AntiSamy policy rules, removing what doesn't match the rules.|
+|`attribute`|Default for attribute values|Encodes all HTML special characters.|
+|`uri`|To display links and paths Default for href and src attribute values|Validates URI for writing as an href or src attribute value, outputs nothing if validation fails.|
+|`number`|To display numbers|Validates URI for containing an integer, outputs zero if validation fails.|
+|`attributeName`|Default for data-sly-attribute when setting attribute names|Validates the attribute name, outputs nothing if validation fails.|
+|`elementName`|Default for data-sly-element|Validates the element name, outputs nothing if validation fails.|
+|`scriptToken`|For JS identifiers, literal numbers, or literal strings|Validates the JavaScript token, outputs nothing if validation fails.|
+|`scriptString`|Within JS strings|Encodes characters that would break out of the string.|
+|`scriptComment`|Within JS comments|Validates the JavaScript comment, outputs nothing if validation fails.|
+|`styleToken`|For CSS identifiers, numbers, dimensions, strings, hex colours or functions.|Validates the CSS token, outputs nothing if validation fails.|
+|`styleString`|Within CSS strings|Encodes characters that would break out of the string.|
+|`styleComment`|Within CSS comments|Validates the CSS comment, outputs nothing if validation fails.|
+|`unsafe`|Only if none of the above does the job|Disables escaping and XSS protection completely.|

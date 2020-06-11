@@ -1,16 +1,6 @@
 ---
 title: HTL JavaScript Use-API
-seo-title: HTL JavaScript Use-API
 description: The HTML Template Langugae - HTL - JavaScript Use-API enables a HTL file to access helper code written in JavaScript.
-seo-description: The HTML Template Langugae - HTL - JavaScript Use-API enables a HTL file to access helper code written in JavaScript.
-uuid: 7ab34b10-30ac-44d6-926b-0234f52e5541
-contentOwner: User
-products: SG_EXPERIENCEMANAGER/HTL
-topic-tags: html-template-language
-content-type: reference
-discoiquuid: 18871af8-e44b-4eec-a483-fcc765dae58f
-mwpw-migration-script-version: 2017-10-12T21 46 58.665-0400
-
 ---
 
 # HTL JavaScript Use-API {#htl-javascript-use-api}
@@ -21,12 +11,12 @@ The HTML Template Langugae (HTL) JavaScript Use-API enables a HTL file to access
 
 We define a component, `info`, located at
 
-**`/apps/my-example/components/info`**
+`/apps/my-example/components/info`
 
 It contains two files:
 
 * **`info.js`**: a JavaScript file that defines the use-class.
-* `info.html`: an HTL file that defines the component `info`. This code will use the functionality of `info.js` through the use-API.
+* **`info.html`**: an HTL file that defines the component `info`. This code will use the functionality of `info.js` through the use-API.
 
 ### /apps/my-example/component/info/info.js {#apps-my-example-component-info-info-js}
 
@@ -49,9 +39,9 @@ use(function () {
 </div>
 ```
 
-We also create a content node that uses the **`info`** component at
+We also create a content node that uses the `info` component at
 
-**`/content/my-example`**, with properties:
+`/content/my-example`, with properties:
 
 * `sling:resourceType = "my-example/component/info"`
 * `title = "My Example"`
@@ -97,7 +87,7 @@ Consider following component template:
 </section>
 ```
 
-The corresponding logic can be written using following ***server-side*** JavaScript, located in a `component.js` file right next to the template:
+The corresponding logic can be written using following server-side JavaScript, located in a `component.js` file right next to the template:
 
 ```
 use(function () {
@@ -143,7 +133,7 @@ use(['../utils/MyUtils.js'], function (utils) {
 
 The dependency pattern can also be used to extend the logic of another component (which typically is the `sling:resourceSuperType` of the current component).
 
-Imagine that the parent component already provides the `title`, and we want to add a **`description`** as well:
+Imagine that the parent component already provides the `title`, and we want to add a `description` as well:
 
 ```
 use(['../parent-component/parent-component.js'], function (component) {
@@ -160,7 +150,7 @@ use(['../parent-component/parent-component.js'], function (component) {
 
 ## Passing Parameters to a Template {#passing-parameters-to-a-template}
 
-In the case of **`data-sly-template`** statements that can be independent from components, it can be useful to pass parameters to the associated Use-API.
+In the case of `data-sly-template` statements that can be independent from components, it can be useful to pass parameters to the associated Use-API.
 
 So in our component let's call a template that is located in a different file:
 
@@ -177,7 +167,7 @@ Then this is the template located in `template.html`:
 </template>
 ```
 
-The corresponding logic can be written using following ***server-side*** JavaScript, located in a `template.js` file right next to the template file:
+The corresponding logic can be written using following server-side JavaScript, located in a `template.js` file right next to the template file:
 
 ```
 use(function () {
