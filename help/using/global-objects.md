@@ -26,11 +26,11 @@ The most useful variables in the table below are highlighted in bold.
 
 | Variable Name |Description |
 |---|---|
-| `component` | `com.day.cq.wcm.api.components.Component` |
+| **`component`** | `com.day.cq.wcm.api.components.Component` |
 | `componentContext` | `com.day.cq.wcm.api.components.ComponentContext` |
-| `currentDesign` | `com.day.cq.wcm.api.designer.Design` |
+| **`currentDesign`** | `com.day.cq.wcm.api.designer.Design` |
 | `currentNode` | `javax.jcr.Node` |
-| `currentPage` | `com.day.cq.wcm.api.Page` |
+| **`currentPage`** | `com.day.cq.wcm.api.Page` |
 | `currentSession` | `javax.servlet.http.HttpSession` |
 | `currentStyle` | `com.day.cq.wcm.api.designer.Style` |
 | `designer` | `com.day.cq.wcm.api.designer.Designer` |
@@ -39,15 +39,15 @@ The most useful variables in the table below are highlighted in bold.
 | `out` | `java.io.PrintWriter` |
 | `pageManager` | `com.day.cq.wcm.api.PageManager` |
 | `reader` | `java.io.BufferedReader` |
-| `request` | `org.apache.sling.api.SlingHttpServletRequest` |
+| **`request`** | `org.apache.sling.api.SlingHttpServletRequest` |
 | `resolver` | `org.apache.sling.api.resource.ResourceResolver` |
-| `resource` | `org.apache.sling.api.resource.Resource` |
-| `resourceDesign` | `com.day.cq.wcm.api.designer.Design` |
-| `resourcePage` | `com.day.cq.wcm.api.Page` |
+| **`resource`** | `org.apache.sling.api.resource.Resource` |
+| **`resourceDesign`** | `com.day.cq.wcm.api.designer.Design` |
+| **`resourcePage`** | `com.day.cq.wcm.api.Page` |
 | `response` | `org.apache.sling.api.SlingHttpServletResponse` |
 | `sling` | `org.apache.sling.api.scripting.SlingScriptHelper` |
 | `slyWcmHelper` | `com.adobe.cq.sightly.WCMScriptHelper` |
-| `wcmmode` | `com.adobe.cq.sightly.SightlyWCMMode` |
+| **`wcmmode`** | `com.adobe.cq.sightly.SightlyWCMMode` |
 | `xssAPI` | `com.adobe.granite.xss.XSSAPI` |
 
 ## JavaScript-backed Objects {#javascript-backed-objects}
