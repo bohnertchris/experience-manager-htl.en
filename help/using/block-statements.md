@@ -196,7 +196,7 @@ For security reasons, `data-sly-element` accepts only the following element name
 ```xml
 a abbr address article aside b bdi bdo blockquote br caption cite code col colgroup
 data dd del dfn div dl dt em figcaption figure footer h1 h2 h3 h4 h5 h6 header i ins
-kbd li main mark nav ol p pre q rp rt ruby s samp section small span strong sub 
+kbd li main mark nav ol p pre q rp rt ruby s samp section small span strong sub
 sup table tbody td tfoot th thead time tr u var wbr
 ```
 
@@ -237,7 +237,7 @@ Following are some examples on comparing values:
 
 ## repeat {#repeat}
 
-With `data-sly-repeat` you can *repeat* an element multiple times based on the list that is specified.
+With `data-sly-repeat` you can repeat an element multiple times based on the list that is specified.
 
 ```xml
 <div data-sly-repeat="${currentPage.listChildren}">${item.name}</div>
@@ -365,7 +365,7 @@ cssClassName='className'}"></article>
 
 >[!NOTE]
 >
->AEM offers clear and simple logic controlling the decoration tags that wrap included elements. For details see [Decoration Tag](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/decoration-tag.html) in the developing components documentation.
+>AEM offers clear and simple logic controlling the decoration tags that wrap included elements. For details see [Decoration Tag](https://docs.adobe.com/content/help/en/experience-manager-65/developing/components/decoration-tag.html) in the developing components documentation.
 
 ## include {#include}
 

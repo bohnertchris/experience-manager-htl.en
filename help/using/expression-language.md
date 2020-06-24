@@ -14,7 +14,7 @@ The HTML Template Language uses an expression language to access the data struct
 </h1>
 ```
 
-Expressions can be escaped by prepended by a `\` character, for instance `\${test}` will render `${test}`.
+Expressions can be escaped by prepending a `\` character, for instance `\${test}` will render `${test}`.
 
 >[!NOTE]
 >
@@ -47,7 +47,7 @@ Also shown in the example above is that Java getter functions, like `getTitle()`
 
 The names of variables, called identifiers, conform to certain rules. They must start with a letter (`A`-`Z` and `a`-`z`), or an underscore (`_`), and subsequent characters can also be digits (`0`-`9`) or colon (`:`). Unicode letters such as `å` and `ü` cannot be used in identifiers.
 
-Given that the colon (`:`) character is common in AEM property names, it is convenient that it is a valid identifier character:
+Given that the colon (`:`) character is common in AEM property names, it should be emphasized that it is conveniently a valid identifier character:
 
 `${properties.jcr:title}`
 
@@ -85,7 +85,7 @@ There is only one number type: positive integers. While other number formats, li
 
 ### Strings {#strings}
 
-They represent textual data, and can be single or double quoted:
+Strings represent textual data, and can be single or double quoted:
 
 `${'foo'} ${"bar"}`
 
@@ -203,7 +203,9 @@ This operator can typically be used to define conditions within expressions, lik
 <p>${currentPage.isLocked ? "page is locked" : "page can be edited"}</p>
 ```
 
-An important note, since colon characters are also permitted in identifiers, it is best to separate the ternary operators with a white space to provide clarity to the parser:
+>[!TIP]
+>
+>Since colon characters are also permitted in identifiers, it is best to separate the ternary operators with a white space to provide clarity to the parser:
 
 ```xml
 <p>${properties.showDescription ? properties.jcr:description : properties.jcr:title}</p>
@@ -279,7 +281,7 @@ ${'Page {0} of {1}' @ format=[current, total]}
 
 ### Internationalization {#internationalization}
 
-Translates the string to the language of the current *source* (see below), using the current [dictionary](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/i18n-translator). If no translation is found, the original string is used.
+Translates the string to the language of the current *source* (see below), using the current [dictionary](https://docs.adobe.com/content/help/en/experience-manager-65/developing/components/internationalization/i18n-translator.html). If no translation is found, the original string is used.
 
 ```xml
 ${'Page' @ i18n}

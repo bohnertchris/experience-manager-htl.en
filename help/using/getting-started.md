@@ -5,13 +5,11 @@ description: HTL supported by AEM takes the place of JSP as the preferred and re
 
 # Getting Started with HTL {#getting-started-with-htl}
 
-The HTML Template Language (HTL) supported by Adobe Experience Manager (AEM) takes the place of JSP (JavaServer Pages) as the preferred and recommended server-side template system for HTML in AEM.
+The HTML Template Language (HTL) supported by Adobe Experience Manager (AEM) is the preferred and recommended server-side template system for HTML in AEM. It takes the place of JSP (JavaServer Pages) as used in previous versions of AEM. 
 
 >[!NOTE]
 >
 >To run most examples provided on this page, a live execution environment called the [Read Eval Print Loop](https://github.com/Adobe-Marketing-Cloud/aem-htl-repl) can be used.
->
->The AEM Community has generated a series of [articles, videos and webinars](related-community-articles.md) related to using HTL.
 
 ## HTL over JSP {#htl-over-jsp}
 
@@ -64,12 +62,6 @@ The two pages linked above provide the detailed list of features available for s
 
 ### The SLY Element {#the-sly-element}
 
->[!NOTE]
->
->The SLY element was introduced with AEM 6.1, or HTL 1.1.
->
->Prior to that, the [`data-sly-unwrap`](block-statements.md) attribute had to be used instead.
-
 A central concept of HTL is to offer the possibility of reusing existing HTML elements to define block statements, which avoids the need of inserting additional delimiters to define where the statement starts and ends. This unobtrusive annotation of the markup to transform a static HTML into a functioning dynamic template offers the benefit of not breaking the validity of the HTML code, and therefore to still properly display, even as static files.
 
 However, sometimes there might not be an existing element at the exact location where a block statement has to be inserted. For such cases, it is possible to insert a special SLY element that will be automatically removed from the output, while executing the attached block statements and displaying its content accordingly.
@@ -111,6 +103,12 @@ and the DIV element could have been annotated with the condition:
     <p>${properties.jcr:description}</p>
 </div>
 ```
+
+>[!NOTE]
+>
+>The SLY element was introduced with AEM 6.1, or HTL 1.1.
+>
+>Prior to that, the [`data-sly-unwrap`](block-statements.md) attribute had to be used instead.
 
 ### HTL Comments {#htl-comments}
 

@@ -13,10 +13,9 @@ These objects provide convenient access to commonly used information. Their cont
 
 |Variable Name|Description|
 |--- |--- |
-|`properties`|List of properties of the current Resource. Backed by [org.apache.sling.api.resource.ValueMap](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/resource/ValueMap.html)|
-|`pageProperties`|List of page properties of the current Page. Backed by [org.apache.sling.api.resource.ValueMap](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/resource/ValueMap.hmtl)|
-|`inheritedPageProperties`|List of inherited page properties of the current Page. Backed by [org.apache.sling.api.resource.ValueMap](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/resource/ValueMap.html)|
-
+|`properties`|List of properties of the current Resource. Backed by [org.apache.sling.api.resource.ValueMap](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/resource/ValueMap.html)|
+|`pageProperties`|List of page properties of the current Page. Backed by [org.apache.sling.api.resource.ValueMap](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/resource/ValueMap.html)|
+|`inheritedPageProperties`|List of inherited page properties of the current Page. Backed by [org.apache.sling.api.resource.ValueMap](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/resource/ValueMap.html)|
 
 ## Java-backed Objects {#java-backed-objects}
 
@@ -52,7 +51,7 @@ The most useful variables in the table below are highlighted in bold.
 
 ## JavaScript-backed Objects {#javascript-backed-objects}
 
-There are also objects available that are backed by JavaScript. However, as of AEM 6.2 these objects are still experimental and it is better to use the Java-backed objects, which allow to do the same.
+It is possible to back HTL logic with JavaScript. However the preferred or recommended method is by using [Sling Models.](https://sling.apache.org/documentation/bundles/models.html)
 
 <!-- 
 

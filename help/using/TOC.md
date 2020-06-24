@@ -21,5 +21,3 @@ user-guide-title: Adobe Experience Manager HTL
   + [HTL Expression Language](expression-language.md)
   + [Code Samples](code-samples.md)
   + [Standardization](standardization.md)
-+ Related Resources{#resources}
-  + [Related Community Articles](related-community-articles.md)
