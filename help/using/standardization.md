@@ -8,4 +8,4 @@ description: Standardization for HTL including the HTL specification and the HTL
 The following are the HTL standards:
 
 * [The HTL Specification](https://github.com/adobe/htl-spec) - For language lawyers, the formal syntax and feature description.
-* [The HTL TCK](https://github.com/Adobe-Marketing-Cloud/sightly-tck) - A suite of tests to certify the compatibility of the language.
+* [The HTL TCK](https://github.com/adobe/htl-tck) - A suite of tests to certify the compatibility of the language.
