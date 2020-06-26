@@ -70,7 +70,7 @@ Initialize a JavaScript object, where the source file is located in the same dir
 <div data-sly-use.nav="navigation.js">${nav.foo}</div>
 ```
 
-Initialize a Java class, where the source file is located in the same directory as the template. Note that the classname must be used, not the file name:
+Initialize a Java class, where the source file is located in the same directory as the template. Note that the class name must be used, not the file name:
 
 ```xml
 <div data-sly-use.nav="Navigation">${nav.foo}</div>
@@ -367,6 +367,29 @@ A simple resource include:
 <article data-sly-resource="path/to/resource"></article>
 ```
 
+#### Path Not Always Required {#path-not-required}
+
+Note that use of a path with `data-sly-resource` is not required if you already have the resource. Therefore if you already have the resource, you can use it directly.
+
+For example the following is correct.
+
+```xml
+<sly data-sly-resource="${resource.path @ decorationTagName='div'}"></sly>
+```
+
+However the following is also perfectly acceptable.
+
+```xml
+<sly data-sly-resource="${resource @ decorationTagName='div'}"></sly>
+```
+
+It is recommended to use the resource directly when possible due to the following reasons.
+
+* If you already have the resource, re-resolving using the path is additional, unnecessary work.
+* Using the path when you already have the resource can introduce unexpected results since Sling resources can be wrapped or can by synthetic and not provided at the given path.
+
+#### Options {#resource-options}
+
 Options allow a number of additional variants:
 
 Manipulating the path of the resource:
@@ -521,7 +544,7 @@ Define a dynamic template and then call it with parameters:
 <div data-sly-call="${two @ title=properties.jcr:title}"></div>
 ```
 
-Templates located in a different file, can be initialised with `data-sly-use`. Note that in this case `data-sly-use` and `data-sly-call` could also be placed on the same element:
+Templates located in a different file, can be initialized with `data-sly-use`. Note that in this case `data-sly-use` and `data-sly-call` could also be placed on the same element:
 
 ```xml
 <div data-sly-use.lib="templateLib.html">
@@ -553,7 +576,7 @@ The `<sly>` HTML tag can be used to remove the current element, allowing only it
 <sly data-sly-resource="./header"></sly>
 ```
 
-Although not a valid HTML 5 tag, the `<sly>` tag can be displayed in the final output using data-sly-unwrap:
+Although not a valid HTML 5 tag, the `<sly>` tag can be displayed in the final output using `data-sly-unwrap`:
 
 ```xml
 <sly data-sly-unwrap="${false}"></sly> <!--/* outputs: <sly></sly> */-->

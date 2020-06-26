@@ -58,7 +58,7 @@ It is possible to back HTL logic with JavaScript. However the preferred or recom
 Comment Type: draft
 
 <p> </p> 
-<p>JS-specific context variables: These supply access to asynchronous implementions of all the Java objects listed below). To write HTL code that is protable to granite.js, you must use the variables provided by aem and sly, not the native Java variables.</p> 
+<p>JS-specific context variables: These supply access to asynchronous implementations of all the Java objects listed below). To write HTL code that is portable to granite.js, you must use the variables provided by aem and sly, not the native Java variables.</p> 
 <ul> 
  <li>wcm
   <ul> 
@@ -86,7 +86,7 @@ Comment Type: draft
    <li>properties: {sling:resourceType,jcr:created,jcr:lastModified,jcr:createdBy, textIsRich,jcr:lastModifiedBy,jcr:primaryType}</li> 
   </ul> </li> 
 </ul> 
-<p>JS specific non-HTL related variables. Present due to JS-implementaion. Generally not used in templating:</p> 
+<p>JS specific non-HTL related variables. Present due to JS-implementation. Generally not used in templating:</p> 
 <ul> 
  <li>console: JS Object</li> 
  <li>exports: JS Object</li> 

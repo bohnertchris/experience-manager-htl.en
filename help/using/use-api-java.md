@@ -13,7 +13,7 @@ The Use-API POJOs can also expose a public method, called init, with the followi
 
 ```java
     /**
-     * Initialises the Use bean.
+     * Initializes the Use bean.
      *
      * @param bindings All bindings available to the HTL scripts.
      **/
@@ -142,7 +142,7 @@ public class Info extends WCMUsePojo {
 
 >[!NOTE]
 >
->Using hyphens in the names of repository items is a recommended practice in AEM developement. However, hyphens are illegal within Java package names. For this reason, **all hyphens in the repository path must be converted to underscores in the package name**.
+>Using hyphens in the names of repository items is a recommended practice in AEM development. However, hyphens are illegal within Java package names. For this reason, **all hyphens in the repository path must be converted to underscores in the package name**.
 
 ### Extending `WCMUsePojo` {#extending-wcmusepojo}
 
@@ -163,7 +163,7 @@ public class Info extends WCMUsePojo
 
 ### Initializing the class {#initializing-the-class}
 
-When the use-class is extended from `WCMUsePojo`, initializiation is performed by overriding the `activate` method:
+When the use-class is extended from `WCMUsePojo`, initialization is performed by overriding the `activate` method:
 
 ### /apps/my-example/component/info/Info.java {#apps-my-example-component-info-info-java-3}
 
@@ -246,7 +246,7 @@ public class Info extends WCMUsePojo {
 
 ### data-sly-use attribute {#data-sly-use-attribute}
 
-The `data-sly-use` attribute is used to initialize the use-class within your HTL code. In our example, the `data-sly-use` attribute declares that we want to use the class `Info`. We can use just the local name of the class because we are using a local install (having placed the Java source file is in the same folder as the HTL file). If we were using a bundle install we would have to specify the fully qualified classname (See [Use-class Bundle Install](#LocalvsBundleJavaClass)).
+The `data-sly-use` attribute is used to initialize the use-class within your HTL code. In our example, the `data-sly-use` attribute declares that we want to use the class `Info`. We can use just the local name of the class because we are using a local install (having placed the Java source file is in the same folder as the HTL file). If we were using a bundle install we would have to specify the fully qualified class name.
 
 ### `/apps/my-example/component/info/info.html` {#apps-my-example-component-info-info-html-2}
 
@@ -298,7 +298,7 @@ Now, when we access `/content/my-example.html` it will return the following HTML
 
 ## Beyond The Basics {#beyond-the-basics}
 
-In this section we'll introdce some further features that go beyond the simple example above:
+In this section we'll introduce some further features that go beyond the simple example above:
 
 * Passing parameters to a use-class.
 * Bundled Java use-class.
@@ -514,7 +514,7 @@ The `Use` interface defines only one method:
 
 The `init` method will be called on initialization of the class with a `Bindings` object that holds all the context objects and any parameters passed into the use-class.
 
-All additional functionality (such as the equivalent of `WCMUsePojo.getProperties()`) must be implmented explicitly using the [`javax.script.Bindings`](http://docs.oracle.com/javase/7/docs/api/javax/script/Bindings.html) object. For example:
+All additional functionality (such as the equivalent of `WCMUsePojo.getProperties()`) must be implemented explicitly using the [`javax.script.Bindings`](http://docs.oracle.com/javase/7/docs/api/javax/script/Bindings.html) object. For example:
 
 ### `Info.java` {#info-java}
 
@@ -610,6 +610,6 @@ The `data-sly-use` statement directs HTL to adapt the current `Resource` to an `
 
 ### Adaptable from Request {#adaptable-from-request}
 
-It is also possible to emply as a use-class any class that is adaptable from [`org.apache.sling.api.SlingHttpServletRequest`](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/SlingHttpServletRequest.html)
+It is also possible to employ as a use-class any class that is adaptable from [`org.apache.sling.api.SlingHttpServletRequest`](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/SlingHttpServletRequest.html)
 
 As with the above case of a use-class adaptable from `Resource`, a use-class adaptable from [`SlingHttpServletRequest`](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/org/apache/sling/api/SlingHttpServletRequest.html) can be specified in the `data-sly-use` statement. Upon execution the current request will be adapted to the class given and the resulting object will be made available within HTL.

@@ -43,7 +43,7 @@ The accessed properties can be functions, however passing arguments is not suppo
 
 Also shown in the example above is that Java getter functions, like `getTitle()`, can be accessed without prepending the `get`, and by lowering the case of the character that follows.
 
-### Valid Indentifier Characters {#valid-indentifier-characters}
+### Valid Identifier Characters {#valid-identifier-characters}
 
 The names of variables, called identifiers, conform to certain rules. They must start with a letter (`A`-`Z` and `a`-`z`), or an underscore (`_`), and subsequent characters can also be digits (`0`-`9`) or colon (`:`). Unicode letters such as `å` and `ü` cannot be used in identifiers.
 
@@ -105,7 +105,7 @@ In addition to ordinary characters, following special characters can be used:
   * `\u0022` for `"`
   * `\u0027` for `'`
 
-For characters not listed above, preceding a backslash caracter will display an error.
+For characters not listed above, preceding a backslash character will display an error.
 
 Here are some examples of how to use string escaping:
 
@@ -187,7 +187,7 @@ This operator can be used to test if one of two conditions apply, like verifying
 
 As the logical OR operator returns the first variable that is truthy, it can also very conveniently be used to provide fallback values.
 
-conditionally display HTML attributes, because HTL removes attributes with values set by expressions that evaluate to false or to an empty string. So the example below will display **`properties.jcr:`** title if it exists and is not empty, else it falls back to dislaying **`properties.jcr:description`** if it exists and is not empty, else it will display the message "no title or description provided":
+conditionally display HTML attributes, because HTL removes attributes with values set by expressions that evaluate to false or to an empty string. So the example below will display **`properties.jcr:`** title if it exists and is not empty, else it falls back to displaying **`properties.jcr:description`** if it exists and is not empty, else it will display the message "no title or description provided":
 
 ```xml
 <p>${properties.jcr:title || properties.jcr:description || "no title or description provided"}</p>

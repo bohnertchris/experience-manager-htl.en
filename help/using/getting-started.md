@@ -75,7 +75,7 @@ So following example:
 </sly>
 ```
 
-will output something like following HTML, but only if there are both, a **`jcr:title`** and a **`jcr:decription`** property defined, and if neither of them are empty:
+will output something like following HTML, but only if there are both, a **`jcr:title`** and a **`jcr:description`** property defined, and if neither of them are empty:
 
 ```xml
 <h1>MY TITLE</h1>
