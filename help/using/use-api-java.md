@@ -3,9 +3,24 @@ title: HTL Java Use-API
 description: The HTML Template Language - HTL - Java Use-API enables a HTL file to access helper methods in a custom Java class. 
 ---
 
-# HTL Java Use-API{#htl-java-use-api}
+# HTL Java Use-API {#htl-java-use-api}
 
-The HTML Template Language (HTL) Java Use-API enables an HTL file to access helper methods in a custom Java class. This allows all complex business logic to be encapsulated in the Java code, while the HTL code deals only with direct markup production.
+The HTML Template Language (HTL) Java Use-API enables an HTL file to access helper methods in a custom Java class through `data-sly-use`. This allows all complex business logic to be encapsulated in the Java code, while the HTL code deals only with direct markup production.
+
+A Java Use-API object can be a simple POJO, instantiated by a particular implementation through the POJO's default constructor.
+
+The Use-API POJOs can also expose a public method, called init, with the following signature:
+
+```java
+    /**
+     * Initialises the Use bean.
+     *
+     * @param bindings All bindings available to the HTL scripts.
+     **/
+    public void init(javax.script.Bindings bindings);
+```
+
+The `bindings` map can contain objects that provide context to the currently executed HTL script that the Use-API object can use for its processing.
 
 ## A Simple Example {#a-simple-example}
 
@@ -66,23 +81,23 @@ For example, suppose that you want the `info` component to display the `title` a
 
 ```java
 package apps.my_example.components.info;
- 
+
 import com.adobe.cq.sightly.WCMUsePojo;
- 
+
 public class Info extends WCMUsePojo {
     private String lowerCaseTitle;
     private String lowerCaseDescription;
- 
+
     @Override
     public void activate() throws Exception {
         lowerCaseTitle = getProperties().get("title", "").toLowerCase();
         lowerCaseDescription = getProperties().get("description", "").toLowerCase();
     }
- 
+
     public String getLowerCaseTitle() {
         return lowerCaseTitle;
     }
- 
+
     public String getLowerCaseDescription() {
         return lowerCaseDescription;
     }
@@ -115,9 +130,9 @@ In this case `Info.java` is located at `/apps/my-example/components/info` so the
 
 ```java
 package apps.my_example.components.info;
- 
+
 import com.adobe.cq.sightly.WCMUsePojo;
- 
+
 public class Info extends WCMUsePojo {
 
    ...
@@ -137,11 +152,11 @@ While there are number of ways of incorporating a Java class with HTL (see Alter
 
 ```java
 package apps.my_example.components.info;
- 
+
 import com.adobe.cq.sightly.WCMUsePojo;
- 
-public class Info extends WCMUsePojo {
-    
+
+public class Info extends WCMUsePojo
+
     ...
 }
 ```
@@ -158,7 +173,7 @@ When the use-class is extended from `WCMUsePojo`, initializiation is performed b
 public class Info extends WCMUsePojo {
     private String lowerCaseTitle;
     private String lowerCaseDescription;
- 
+
     @Override
     public void activate() throws Exception {
         lowerCaseTitle = getProperties().get("title", "").toLowerCase();
@@ -218,11 +233,11 @@ In the following example, the methods `getTitle` and `getDescription` result in 
 public class Info extends WCMUsePojo {
 
     ...
- 
+
     public String getLowerCaseTitle() {
         return lowerCaseTitle;
     }
- 
+
     public String getLowerCaseDescription() {
         return lowerCaseDescription;
     }
@@ -309,25 +324,25 @@ Here we are passing a parameter called `text`. The use-class then uppercases the
 
 ```java
 package apps.my_example.components.info;
- 
+
 import com.adobe.cq.sightly.WCMUsePojo;
- 
+
 public class Info extends WCMUsePojo {
-    
+
     ...
 
     private String reverseText;
-    
+
     @Override
     public void activate() throws Exception {
 
         ...
-        
+
         String text = get("text", String.class);
         reverseText = new StringBuffer(text).reverse().toString();
 
     }
- 
+
     public String getReverseText() {
         return reverseText;
     }
@@ -336,7 +351,7 @@ public class Info extends WCMUsePojo {
 }
 ```
 
-The parameter is accessed through the `WCMUsePojo` method [ `<T> T get(String paramName, Class<T> type)`](https://helpx.adobe.com/experience-manager/6-2/sites/developing/using/reference-materials/javadoc/com/adobe/cq/sightly/WCMUse.html)
+The parameter is accessed through the `WCMUsePojo` method [`<T> T get(String paramName, Class<T> type)`](https://helpx.adobe.com/experience-manager/6-2/sites/developing/using/reference-materials/javadoc/com/adobe/cq/sightly/WCMUse.html)
 
 In our case, the statement:
 
@@ -376,12 +391,12 @@ We also adapt our existing `info.html` to use this new template:
 ### `/apps/my-example/component/info/info.html` {#apps-my-example-component-info-info-html-5}
 
 ```xml
-<div data-sly-use.info="Info" 
+<div data-sly-use.info="Info"
      data-sly-use.extra="extra.html">
-    
+
   <h1>${info.lowerCaseTitle}</h1>
   <p>${info.lowerCaseDescription}</p>
-    
+
   <div data-sly-call="${extra.extra @ text=properties.description}"></div>
 
 </div>
@@ -401,21 +416,21 @@ The Java use-class `Info.java` is changed to handle the new text parameter:
 
 ```java
 package apps.my_example.components.info;
- 
+
 import com.adobe.cq.sightly.WCMUsePojo;
- 
+
 public class ExtraHelper extends WCMUsePojo {
     private String reversedText;
     ...
-    
+
     @Override
     public void activate() throws Exception {
-        String text = get("text", String.class);      
+        String text = get("text", String.class);
         reversedText = new StringBuilder(text).reverse().toString();
 
         ...
     }
- 
+
     public String getReversedText() {
         return reversedText;
     }
@@ -432,9 +447,9 @@ With a bundle use-class the class must be compiled, packaged and deployed in AEM
 
 ```java
 package org.example.app.components;
- 
+
 import com.adobe.cq.sightly.WCMUsePojo;
- 
+
 public class Info extends WCMUsePojo {
     ...
 }
@@ -513,7 +528,7 @@ public class MyComponent implements Use {
 
         // All standard objects/binding are available
         Resource resource = (Resource)bindings.get("resource");
-        ValueMap properties = (ValueMap)bindings.get("properties"); 
+        ValueMap properties = (ValueMap)bindings.get("properties");
         ...
 
         // Parameters passed to the use-class are also available

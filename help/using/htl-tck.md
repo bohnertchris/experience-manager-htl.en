@@ -3,7 +3,7 @@ title: The HTL TCK
 description: HTL is the official server-side template system for AEM
 ---
 
-# The HTL TCK{#the-htl-tck}
+# The HTL TCK {#the-htl-tck}
 
 ## What is HTL TCK
 

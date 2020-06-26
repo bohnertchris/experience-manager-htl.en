@@ -3,7 +3,7 @@ title: The HTL Specification
 description: The Adobe HTL specification
 ---
 
-# The HTL Specification
+# The HTL Specification {#htl-specification}
 
 The HTML Template Language (HTL), [formerly known as Sightly,](update.md) was introduced with Adobe Experience Manager 6.0 and is the preferred and recommended server-site template system for HTML, taking the place of JSP (JavaServer Pages).
 

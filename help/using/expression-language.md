@@ -32,7 +32,7 @@ Without having to specify anything, HTL provides access to all objects that were
 
 There are two ways to access properties of variables, with a dot notation, or with a bracket notation:
 
-```
+```xml
 ${currentPage.title}  
 ${currentPage['title']} or ${currentPage["title"]}
 ```
@@ -278,6 +278,56 @@ Option that replaces the enumerated placeholders, {*n*}, with the corresponding 
 ```xml
 ${'Page {0} of {1}' @ format=[current, total]}
 ```
+
+## URL manipulation {#url-manipulation}
+
+A new set of url manipulations is available.
+
+See the following examples on their usage:
+
+Adds the html extension to a path.
+
+```xml
+<a href="${item.path @ extension = 'html'}">${item.name}</a>
+```
+
+Adds the html extension and a selector to a path.
+
+```xml
+<a href="${item.path @ extension = 'html', selectors='products'}">${item.name}</a>
+```
+
+Adds the html extension and a fragment (#value) to a path.
+
+```xml
+<a href="${item.path @ extension = 'html', fragment=item.name}">${item.name}</a>
+```
+
+The `@extension` works in all scenarios, checking whether to add the extension or not.
+
+```xml
+${ link @ extension = 'html' }
+```
+
+### Number/Date-formatting {#number-date-formatting}
+
+HTL allows native formatting of numbers and dates, without writing custom code. This also supports timezone and locale.
+
+The following examples show that the format is specified first, then the value that needs formatting:
+
+```xml
+<h2>${ 'dd-MMMM-yyyy hh:mm:ss' @
+           format=currentPage.lastModified,
+           timezone='PST',
+           locale='fr'}</h2>
+
+<h2>${ '#.00' @ format=300}</h2>
+
+```
+
+>[!NOTE]
+>
+>For complete details on the format you can use, refer to [HTL-specification](https://github.com/Adobe-Marketing-Cloud/htl-spec/blob/master/SPECIFICATION.md).
 
 ### Internationalization {#internationalization}
 

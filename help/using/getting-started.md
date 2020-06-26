@@ -5,7 +5,7 @@ description: HTL supported by AEM takes the place of JSP as the preferred and re
 
 # Getting Started with HTL {#getting-started-with-htl}
 
-The HTML Template Language (HTL) supported by Adobe Experience Manager (AEM) is the preferred and recommended server-side template system for HTML in AEM. It takes the place of JSP (JavaServer Pages) as used in previous versions of AEM. 
+The HTML Template Language (HTL) supported by Adobe Experience Manager (AEM) is the preferred and recommended server-side template system for HTML in AEM. It takes the place of JSP (JavaServer Pages) as used in previous versions of AEM.
 
 >[!NOTE]
 >
@@ -206,7 +206,7 @@ Consider following example:
 
 And following `logic.js` server-side executed JavaScript file placed next to it:
 
-```
+```javascript
 use(function () {
     return {
         title: currentPage.getTitle().substring(0, 10) + "..."
@@ -242,7 +242,7 @@ To help with that, the HTML Template Language automatically escapes each variabl
 
 Assuming following `logic.js` file:
 
-```
+```javascript
 use(function () {
     return {
         link:  "#my link's safe",
@@ -304,7 +304,7 @@ This section introduces a few common scenarios and how to best solve them with t
 
 ### Loading Client Libraries {#loading-client-libraries}
 
-In HTL, client libraries are loaded through a helper template provided by AEM, which can be accessed through [`data-sly-use`](block-statements.md#use). Three templates are available in this file, which can be called through [ `data-sly-call`](block-statements.md#template-call):
+In HTL, client libraries are loaded through a helper template provided by AEM, which can be accessed through [`data-sly-use`](block-statements.md#use). Three templates are available in this file, which can be called through [`data-sly-call`](block-statements.md#template-call):
 
 * **`css`** - Loads only the CSS files of the referenced client libraries.
 * **`js`** - Loads only the JavaScript files of the referenced client libraries.
@@ -352,7 +352,7 @@ Following example shows how the logic (which could also be written in Java) can 
 <div data-sly-use.logic="logic.js" data-json="${logic.json}">...</div>
 ```
 
-```
+```javascript
 /* logic.js file: */
 use(function () {
     var myData = {
@@ -368,7 +368,7 @@ use(function () {
 
 From there, it is easy to imagine how a client-side JavaScript can access that attribute and parse again the JSON. This would for instance be the corresponding JavaScript to place into a client library:
 
-```
+```javascript
 var elements = document.querySelectorAll("[data-json]");
 for (var i = 0; i < elements.length; i++) {
     var obj = JSON.parse(elements[i].dataset.json);

@@ -3,7 +3,7 @@ title: Code Samples
 description: Code samples including the We.Retail Reference Implementation
 ---
 
-# Code Samples{#code-samples}
+# Code Samples {#code-samples}
 
 The following are code samples for HTL:
 

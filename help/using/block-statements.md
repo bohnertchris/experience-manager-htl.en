@@ -7,17 +7,60 @@ description: HTML Template Language (HTL) block statements are custom data attri
 
 HTML Template Language (HTL) block statements are custom `data` attributes added directly to existing HTML. This allows easy and unobtrusive annotation of a prototype static HTML page, converting it to a functioning dynamic template without breaking the validity of the HTML code.
 
-## sly element {#sly-element}
+## Block Overview {#overview}
 
-The `<sly>` does not get displayed in the resulting HTML and can be used instead of `data-sly-unwrap`. The goal of the `<sly>` element is to make it more obvious that the element is not output. If you want you can still use `data-sly-unwrap`.
+HTL block plugins are defined by `data-sly-*` attributes set on HTML elements. Elements can have a closing tag or be self-closing. Attributes can have values (which can be static strings or expressions), or simply be boolean attributes (without a value).
 
 ```xml
-<sly data-sly-test.varone="${properties.yourProp}"/>
+<tag data-sly-BLOCK></tag>                                 <!--/* A block is simply consists in a data-sly attribute set on an element. */-->
+<tag data-sly-BLOCK/>                                      <!--/* Empty elements (without a closing tag) should have the trailing slash. */-->
+<tag data-sly-BLOCK="string value"/>                       <!--/* A block statement usually has a value passed, but not necessarily. */-->
+<tag data-sly-BLOCK="${expression}"/>                      <!--/* The passed value can be an expression as well. */-->
+<tag data-sly-BLOCK="${@ myArg='foo'}"/>                   <!--/* Or a parametric expression with arguments. */-->
+<tag data-sly-BLOCKONE="value" data-sly-BLOCKTWO="value"/> <!--/* Several block statements can be set on a same element. */-->
 ```
 
-As with `data-sly-unwrap`, try to minimize the use of this.
+All evaluated `data-sly-*` attributes are removed from the generated markup.
 
-## use {#use}
+### Identifiers {#identifiers}
+
+A block statement can also be followed by an identifier:
+
+```xml
+<tag data-sly-BLOCK.IDENTIFIER="value"></tag>
+```
+
+The identifier can be used by the block statement in various ways, here are some examples:
+
+```xml
+<!--/* Example of statements that use the identifier to set a variable with their result: */-->
+<div data-sly-use.navigation="MyNavigation">${navigation.title}</div>
+<div data-sly-test.isEditMode="${wcmmode.edit}">${isEditMode}</div>
+<div data-sly-list.child="${currentPage.listChildren}">${child.properties.jcr:title}</div>
+<div data-sly-template.nav>Hello World</div>
+
+<!--/* The attribute statement uses the identifier to know to which attribute it should apply it's value: */-->
+<div data-sly-attribute.title="${properties.jcr:title}"></div> <!--/* This will create a title attribute */-->
+```
+
+Top top-level identifiers are case-insensitive (because they can be set through HTML attributes which are case-insensitive), but all their properties are case-sensitive.
+
+## Available Block Statements {#available-block statements}
+
+There are a number of block statements available. When used on the same element, the following priority list defines how block statements are evaluated:
+
+1. `data-sly-template`
+1. `data-sly-set`, `data-sly-test`, `data-sly-use`
+1. `data-sly-call`
+1. `data-sly-text`
+1. `data-sly-element`, `data-sly-include`, `data-sly-resource`
+1. `data-sly-unwrap`
+1. `data-sly-list`, `data-sly-repeat`
+1. `data-sly-attribute`
+
+When two block statements have the same priority, their evaluation order is from left to right.
+
+### use {#use}
 
 `data-sly-use` initializes a helper object (defined in JavaScript or Java) and exposes it through a variable.
 
@@ -57,9 +100,20 @@ Initialize another HTL template that can then be called using `data-sly-call`:
 >
 >* [Java Use-API](use-api-java.md)
 >* [JavaScript Use-API](use-api-javascript.md)
->
 
-## unwrap {#unwrap}
+#### data-sly-use with resources {#data-sly-use-with-resources}
+
+This allows getting resources directly in HTL with `data-sly-use` and does not require writing code to get it.
+
+For example:
+
+```xml
+<div data-sly-use.product=“/etc/commerce/product/12345”>
+  ${ product.title }
+</div>
+```
+
+### unwrap {#unwrap}
 
 `data-sly-unwrap` removes the host element from the generated markup while retaining its content. This allows the exclusion of elements that are required as part of HTL presentation logic but are not desired in the actual output.
 
@@ -95,7 +149,16 @@ It is also possible to conditionally unwrap an element:
 <div class="popup" data-sly-unwrap="${isPopup}">content</div>
 ```
 
-## text {#text}
+### set {#set}
+
+`data-sly-set` defines a new identifier with a pre-defined value.
+
+```xml
+<span data-sly-set.profile="${user.profile}">Hello, ${profile.firstName} ${profile.lastName}!</span>
+<a class="profile-link" href="${profile.url}">Edit your profile</a>
+```
+
+### text {#text}
 
 `data-sly-text` replaces the content of its host element with the specified text.
 
@@ -113,7 +176,7 @@ is equivalent to
 
 Both will display the value of `jcr:description` as paragraph text. The advantage of the second method is that is allows the unobtrusive annotation of HTML while keeping the static placeholder content from the original designer.
 
-## attribute {#attribute}
+### attribute {#attribute}
 
 `data-sly-attribute` adds attributes to the host element.
 
@@ -179,7 +242,7 @@ produces,
 <div title="myTitle" class="myClass" id="myId"></div>
 ```
 
-## element {#element}
+### element {#element}
 
 `data-sly-element` replaces the element name of the host element.
 
@@ -202,7 +265,7 @@ sup table tbody td tfoot th thead time tr u var wbr
 
 To set other elements, XSS security must be turned off ( `@context='unsafe'`).
 
-## test {#test}
+### test {#test}
 
 `data-sly-test` conditionally removes the host element and it's content. A value of `false` removes the element; a value of `true` retains the element.
 
@@ -228,14 +291,14 @@ Following are some examples on comparing values:
 <div data-sly-test="${properties.jcr:title != 'test'}">NOT TEST</div>
 
 <div data-sly-test="${properties['jcr:title'].length > 3}">Title is longer than 3</div>
-<div data-sly-test="${properties['jcr:title'].length >= 0}">Title is longer or equal to zero </div> 
+<div data-sly-test="${properties['jcr:title'].length >= 0}">Title is longer or equal to zero </div>
 
 <div data-sly-test="${properties['jcr:title'].length > aemComponent.MAX_LENGTH}">
     Title is longer than the limit of ${aemComponent.MAX_LENGTH}
 </div>
 ```
 
-## repeat {#repeat}
+### repeat {#repeat}
 
 With `data-sly-repeat` you can repeat an element multiple times based on the list that is specified.
 
@@ -251,7 +314,7 @@ The following example shows that you can also refer to the *item* for attributes
 <div data-sly-repeat="${currentPage.listChildren}" data-sly-attribute.class="${item.name}">${item.name}</div>
 ```
 
-## list {#list}
+### list {#list}
 
 `data-sly-list` repeats the content of the host element for each enumerable property in the provided object.
 
@@ -294,7 +357,7 @@ You can also access properties dynamically:
 </dl>
 ```
 
-## resource {#resource}
+### resource {#resource}
 
 `data-sly-resource` includes the result of rendering the indicated resource through the sling resolution and rendering process.
 
@@ -367,7 +430,7 @@ cssClassName='className'}"></article>
 >
 >AEM offers clear and simple logic controlling the decoration tags that wrap included elements. For details see [Decoration Tag](https://docs.adobe.com/content/help/en/experience-manager-65/developing/components/decoration-tag.html) in the developing components documentation.
 
-## include {#include}
+### include {#include}
 
 `data-sly-include` replaces the content of the host element with the markup generated by the indicated HTML template file (HTL, JSP, ESP etc.) when it is processed by its corresponding template engine. The rendering context of the included file will not include the current HTL context (that of the including file); Consequently, for inclusion of HTL files, the current `data-sly-use` would have to be repeated in the included file (In such a case it is usually better to use `data-sly-template` and `data-sly-call`)
 
@@ -397,7 +460,48 @@ You can also change the WCM mode:
 <section data-sly-include="${'template.html' @ wcmmode='disabled'}"></section>
 ```
 
-## template & call {#template-call}
+### Request-attributes {#request-attributes}
+
+In the `data-sly-include` and `data-sly-resource` you can pass `requestAttributes` in order to use them in the receiving HTL-script.
+
+This allows you to properly pass-in parameters into scripts or components.
+
+```xml
+<sly data-sly-use.settings="com.adobe.examples.htl.core.hashmap.Settings"
+        data-sly-include="${ 'productdetails.html' @ requestAttributes=settings.settings}" />
+```
+
+Java-code of the Settings class, the Map is used to pass in the requestAttributes:
+
+```xml
+public class Settings extends WCMUsePojo {
+
+  // used to pass is requestAttributes to data-sly-resource
+  public Map<String, Object> settings = new HashMap<String, Object>();
+
+  @Override
+  public void activate() throws Exception {
+    settings.put("layout", "flex");
+  }
+}
+```
+
+For example, via a Sling-Model, you can consume the value of the specified `requestAttributes`.
+
+In this example, layout is injected via the Map from the Use-class:
+
+```xml
+@Model(adaptables=SlingHttpServletRequest.class)
+public class ProductSettings {
+  @Inject @Optional @Default(values="empty")
+  public String layout;
+
+}
+```
+
+### template & call {#template-call}
+
+Template blocks can be used like function calls: in their declaration they can get parameters, which can then be passed when calling them. They also allow recursion.
 
 `data-sly-template` defines a template. The host element and its content are not output by HTL
 
@@ -440,117 +544,21 @@ Template recursion is supported:
 <div data-sly-call="${nav @ page=currentPage}" data-sly-unwrap></div>
 ```
 
-## i18n and locale objects {#i-n-and-locale-objects}
+## sly Element {#sly-element}
 
-When you are using i18n and HTL, you can now also pass in custom locale objects.
-
-```xml
-${'Hello World' @ i18n, locale=request.locale}
-```
-
-## URL manipulation {#url-manipulation}
-
-A new set of url manipulations is available.
-
-See the following examples on their usage:
-
-Adds the html extension to a path.
+The `<sly>` HTML tag can be used to remove the current element, allowing only its children to be displayed. Its functionality is similar to the `data-sly-unwrap` block element:
 
 ```xml
-<a href="${item.path @ extension = 'html'}">${item.name}</a>
+<!--/* This will display only the output of the 'header' resource, without the wrapping <sly> tag */-->
+<sly data-sly-resource="./header"></sly>
 ```
 
-Adds the html extension and a selector to a path.
+Although not a valid HTML 5 tag, the `<sly>` tag can be displayed in the final output using data-sly-unwrap:
 
 ```xml
-<a href="${item.path @ extension = 'html', selectors='products'}">${item.name}</a>
+<sly data-sly-unwrap="${false}"></sly> <!--/* outputs: <sly></sly> */-->
 ```
 
-Adds the html extension and a fragment (#value) to a path.
+The goal of the `<sly>` element is to make it more obvious that the element is not output. If you want you can still use `data-sly-unwrap`.
 
-```xml
-<a href="${item.path @ extension = 'html', fragment=item.name}">${item.name}</a>
-```
-
-## HTL Features Supported in AEM 6.3 and Later{#htl-features-supported-in-aem}
-
-The following new HTL features are supported in Adobe Experience Manager (AEM) 6.3 and later:
-
-### Number/Date-formatting {#number-date-formatting}
-
-HTL allows native formatting of numbers and dates, without writing custom code. This also supports timezone and locale.
-
-The following examples show that the format is specified first, then the value that needs formatting:
-
-```xml
-<h2>${ 'dd-MMMM-yyyy hh:mm:ss' @
-           format=currentPage.lastModified,
-           timezone='PST',
-           locale='fr'}</h2>
-
-<h2>${ '#.00' @ format=300}</h2>
-
-```
-
->[!NOTE]
->
->For complete details on the format you can use, refer to [HTL-specification](https://github.com/Adobe-Marketing-Cloud/htl-spec/blob/master/SPECIFICATION.md).
-
-### data-sly-use with resources {#data-sly-use-with-resources}
-
-This allows to get resources directly in HTL with data-sly-use and does not require to write code to get the resource.
-
-For example:
-
-```xml
-<div data-sly-use.product=“/etc/commerce/product/12345”>
-  ${ product.title }
-</div>
-```
-
-### Request-attributes {#request-attributes}
-
-In the `data-sly-include` and `data-sly-resource` you can now pass `requestAttributes` in order to use them in the receiving HTL-script.
-
-This allows you to properly pass-in parameters into scripts or components.
-
-```xml
-<sly data-sly-use.settings="com.adobe.examples.htl.core.hashmap.Settings" 
-        data-sly-include="${ 'productdetails.html' @ requestAttributes=settings.settings}" />
-```
-
-Java-code of the Settings class, the Map is used to pass in the requestAttributes:
-
-```xml
-public class Settings extends WCMUsePojo {
-
-  // used to pass is requestAttributes to data-sly-resource
-  public Map<String, Object> settings = new HashMap<String, Object>();
-
-  @Override
-  public void activate() throws Exception {
-    settings.put("layout", "flex");
-  }
-}
-```
-
-For example, via a Sling-Model, you can consume the value of the specified `requestAttributes`.
-
-In this example, layout is injected via the Map from the Use-class:
-
-```xml
-@Model(adaptables=SlingHttpServletRequest.class)
-public class ProductSettings {
-  @Inject @Optional @Default(values="empty")
-  public String layout;
-
-}
-```
-
-### Fix for @extension {#fix-for-extension}
-
-The `@extension` works in all scenarios in AEM 6.3 and later. In previous versions you could have a result such as `www.adobe.com.html`. It also checks whether to add the extension or not.
-
-```xml
-${ link @ extension = 'html' }
-```
+As with `data-sly-unwrap`, try to minimize the use of this.

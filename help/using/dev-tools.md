@@ -3,7 +3,7 @@ title: Developer Tools
 description: A list of HTL development tools
 ---
 
-# Developer Tools{#developer-tools}
+# Developer Tools {#developer-tools}
 
 The following developer tools are available for HTL:
 
