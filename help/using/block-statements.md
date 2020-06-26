@@ -45,7 +45,7 @@ The identifier can be used by the block statement in various ways, here are some
 
 Top top-level identifiers are case-insensitive (because they can be set through HTML attributes which are case-insensitive), but all their properties are case-sensitive.
 
-## Available Block Statements {#available-block statements}
+## Available Block Statements {#available-block-statements}
 
 There are a number of block statements available. When used on the same element, the following priority list defines how block statements are evaluated:
 
