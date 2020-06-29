@@ -113,6 +113,10 @@ For example:
 </div>
 ```
 
+>[!TIP]
+>
+>See also the section [Path not Always Required.](#path-not-required)
+
 ### unwrap {#unwrap}
 
 `data-sly-unwrap` removes the host element from the generated markup while retaining its content. This allows the exclusion of elements that are required as part of HTL presentation logic but are not desired in the actual output.
@@ -369,7 +373,7 @@ A simple resource include:
 
 #### Path Not Always Required {#path-not-required}
 
-Note that use of a path with `data-sly-resource` is not required if you already have the resource. Therefore if you already have the resource, you can use it directly.
+Note that use of a path with `data-sly-resource` is not required if you already have the resource. If you already have the resource, you can use it directly.
 
 For example the following is correct.
 
@@ -386,7 +390,7 @@ However the following is also perfectly acceptable.
 It is recommended to use the resource directly when possible due to the following reasons.
 
 * If you already have the resource, re-resolving using the path is additional, unnecessary work.
-* Using the path when you already have the resource can introduce unexpected results since Sling resources can be wrapped or can by synthetic and not provided at the given path.
+* Using the path when you already have the resource can introduce unexpected results since Sling resources can be wrapped or can be synthetic and not provided at the given path.
 
 #### Options {#resource-options}
 
