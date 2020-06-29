@@ -1,23 +1,13 @@
 ---
 title: AEM HTL Overview
-seo-title: Overview of AEM HTL technical documentation.
 description: The purpose of HTL supported by AEM, is to offer a highly productive enterprise-level web framework that increases security, and allows HTML developers without Java knowledge to better participate in AEM projects.
-seo-description: This document lays out the principles and purpose of HTML Template Language - HTL - supported by Adobe Experience Manager. HTL is a highly productive enterprise-level web framework that increases security, and allows HTML developers without Java knowledge to better participate in AEM projects.
-uuid: 8f486325-0a1b-4186-a998-96fc0034c44a
-contentOwner: User
-products: SG_EXPERIENCEMANAGER/HTL
-topic-tags: introduction
-content-type: reference
-discoiquuid: 8f779e08-94c7-43bc-a6e5-d81a9f818c5c
-mwpw-migration-script-version: 2017-10-12T21 46 58.665-0400
-skyline: testing replication
 ---
 
 # Overview {#overview}
 
 The purpose of HTML Template Language (HTL), supported by Adobe Experience Manager (AEM), is to offer a highly productive enterprise-level web framework that increases security, and allows HTML developers without Java knowledge to better participate in AEM projects.
 
-The HTML Template Language has been introduced with AEM 6.0, and takes the place of JSP (JavaServer Pages) as the preferred and recommended server-side template system for HTML. For web developers who need to build robust enterprise websites, the HTML Template Language helps to achieve increased security and development efficiency.
+The HTML Template Language was introduced with AEM 6.0, and takes the place of JSP (JavaServer Pages) as the preferred and recommended server-side template system for HTML. For web developers who need to build robust enterprise websites, the HTML Template Language helps to achieve increased security and development efficiency.
 
 ## Increased Security {#increased-security}
 
@@ -37,7 +27,7 @@ Increased security, simplified development and improved team collaboration, tran
 
 Concretely, from what has been observed when re-implementing the Adobe.com site with the HTML Template Language is that the cost and duration of the project could be reduced by about 25%.
 
-![](assets/chlimage_1.png)
+![Effieicenty increase and cost decrease](assets/chlimage_1.png)
 
 The diagram above shows following improvements in efficiency potentially made possible by HTL:
 
@@ -48,4 +38,3 @@ The diagram above shows following improvements in efficiency potentially made po
 **Read next:**
 
 * [Getting Started with the HTML Template Language](getting-started.md)
-

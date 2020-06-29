@@ -1,24 +1,15 @@
 ---
 title: Getting Started with HTL
-seo-title: Getting Started with HTL
 description: HTL supported by AEM takes the place of JSP as the preferred and recommended server-side template system for HTML in AEM.
-seo-description: The HTML Template Language - HTL - supported by Adobe Experience Manager takes the place of JSP as the preferred and recommended server-side template system for HTML in AEM.
-uuid: 4a7d6748-8cdf-4280-a85d-6c5319abf487
-content-type: reference
-topic-tags: introduction
-discoiquuid: 3bf2ca75-0d68-489d-bd1c-1d4fd730c61a
-mwpw-migration-script-version: 2017-10-12T21 46 58.665-0400
 ---
 
 # Getting Started with HTL {#getting-started-with-htl}
 
-The HTML Template Language (HTL) supported by Adobe Experience Manager (AEM) takes the place of JSP (JavaServer Pages) as the preferred and recommended server-side template system for HTML in AEM.
+The HTML Template Language (HTL) supported by Adobe Experience Manager (AEM) is the preferred and recommended server-side template system for HTML in AEM. It takes the place of JSP (JavaServer Pages) as used in previous versions of AEM.
 
 >[!NOTE]
 >
 >To run most examples provided on this page, a live execution environment called the [Read Eval Print Loop](https://github.com/Adobe-Marketing-Cloud/aem-htl-repl) can be used.
->
->The AEM Community has generated a series of [articles, videos and webinars](related-community-articles.md) related to using HTL.
 
 ## HTL over JSP {#htl-over-jsp}
 
@@ -37,21 +28,15 @@ Even within the same component, HTL files can be used alongside JSPs and ESPs. F
 
 Before getting started with the HTML Template Language, let's start with answering upfront some questions related to the JSP vs HTL topic.
 
-**Does HTL have any limitations that JSP doesn't?**
-HTL doesn't really have limitations compared to JSP in the sense that what can be done with JSP should also be achievable with HTL. However, HTL is by design stricter than JSP in several aspects, and what can be achieved all in a single JSP file, might need to be separated into a Java class or a JavaScript file to be achievable in HTL. But this is generally desired to ensure a good separation of concerns between the logic and the markup.
+**Does HTL have any limitations that JSP doesn't?** - HTL doesn't really have limitations compared to JSP in the sense that what can be done with JSP should also be achievable with HTL. However, HTL is by design stricter than JSP in several aspects, and what can be achieved all in a single JSP file, might need to be separated into a Java class or a JavaScript file to be achievable in HTL. But this is generally desired to ensure a good separation of concerns between the logic and the markup.
 
-**Does HTL support JSP Tag Libraries?**
-No, but as shown in the [Loading Client Libraries](getting-started.md#loading-client-libraries) section, the [template & call](block-statements.md#template-call) statements offer a similar pattern.
+**Does HTL support JSP Tag Libraries?** - No, but as shown in the [Loading Client Libraries](getting-started.md#loading-client-libraries) section, the [template & call](block-statements.md#template-call) statements offer a similar pattern.
 
-**Can the HTL features be extended on an AEM project?**
-No, but as shown in the [Loading Client Libraries](getting-started.md#loading-client-libraries) section, the [template & call](block-statements.md#template-call) statements offer a similar pattern.
-No, they cannot. HTL has powerful extension mechanisms for reuse of logic - the [Use-API](getting-started.md#use-api-for-accessing-logic) - and of markup (the [template & call](block-statements.md#template-call) statements), which can be used to modularize the code of projects.
+**Can the HTL features be extended on an AEM project?** - No, they cannot. HTL has powerful extension mechanisms for reuse of logic - the [Use-API](getting-started.md#use-api-for-accessing-logic) - and of markup (the [template & call](block-statements.md#template-call) statements), which can be used to modularize the code of projects.
 
-**What are the main benefits of HTL over JSP?**
-Security and project efficiency are the main benefits, which are detailed on the [Overview](overview.md).
+**What are the main benefits of HTL over JSP?** - Security and project efficiency are the main benefits, which are detailed on the [Overview](overview.md).
 
-**Will JSP eventually go away?**
-At the current date, there are no plans along these lines.
+**Will JSP eventually go away?** - At the current date, there are no plans along these lines.
 
 ## Fundamental Concepts of HTL {#fundamental-concepts-of-htl}
 
@@ -69,21 +54,13 @@ Here's a first example, which could be contained as is in a **`template.html`** 
 
 Two different kind of syntaxes can be distinguished:
 
-* **[Block Statements](block-statements.md)**
-  To conditionally display the **&lt;h1&gt;** element, a `[data-sly-test](block-statements.md#test)` HTML5 data attribute is used. HTL provides multiple such attributes, which allow to attach behavior to any HTML element, and all are prefixed with `data-sly`.  
+* **[Block Statements](block-statements.md)** - To conditionally display the **&lt;h1&gt;** element, a [`data-sly-test`](block-statements.md#test) HTML5 data attribute is used. HTL provides multiple such attributes, which allow to attach behavior to any HTML element, and all are prefixed with `data-sly`.  
 
-* **[Expression Language](expression-language.md)**
-  HTL expressions are delimited by characters `${` and `}`. At runtime, these expressions are evaluated and their value is injected into the outgoing HTML stream.
+* **[Expression Language](expression-language.md)** - HTL expressions are delimited by characters `${` and `}`. At runtime, these expressions are evaluated and their value is injected into the outgoing HTML stream.
 
 The two pages linked above provide the detailed list of features available for syntax.
 
 ### The SLY Element {#the-sly-element}
-
->[!NOTE]
->
->The SLY element has been introduced with AEM 6.1, or HTL 1.1.
->
->Prior to that, the `[data-sly-unwrap](block-statements.md)` attribute had to be used instead.
 
 A central concept of HTL is to offer the possibility of reusing existing HTML elements to define block statements, which avoids the need of inserting additional delimiters to define where the statement starts and ends. This unobtrusive annotation of the markup to transform a static HTML into a functioning dynamic template offers the benefit of not breaking the validity of the HTML code, and therefore to still properly display, even as static files.
 
@@ -98,14 +75,14 @@ So following example:
 </sly>
 ```
 
-will output something like following HTML, but only if there are both, a **`jcr:title`** and a **`jcr:decription`** property defined, and if none of them are empty:
+will output something like following HTML, but only if there are both, a **`jcr:title`** and a **`jcr:description`** property defined, and if neither of them are empty:
 
 ```xml
 <h1>MY TITLE</h1>
 <p>MY DESCRIPTION</p>
 ```
 
-One thing to take care though is to only use the SLY element when no existing element could have been annotated with the block statement, because SLY elements deter the value offered by the language to not alter the static HTML when making it dynamic.
+One thing to keep in mind is to only use the SLY element when no existing element could have been annotated with the block statement, because SLY elements deter the value offered by the language to not alter the static HTML when making it dynamic.
 
 For example, if the previous example would have been wrapped already inside a DIV element, then the added SLY element would be abusive:
 
@@ -126,6 +103,12 @@ and the DIV element could have been annotated with the condition:
     <p>${properties.jcr:description}</p>
 </div>
 ```
+
+>[!NOTE]
+>
+>The SLY element was introduced with AEM 6.1, or HTL 1.1.
+>
+>Prior to that, the [`data-sly-unwrap`](block-statements.md) attribute had to be used instead.
 
 ### HTL Comments {#htl-comments}
 
@@ -223,7 +206,7 @@ Consider following example:
 
 And following `logic.js` server-side executed JavaScript file placed next to it:
 
-```
+```javascript
 use(function () {
     return {
         title: currentPage.getTitle().substring(0, 10) + "..."
@@ -237,7 +220,7 @@ The example above uses server-side executed JavaScript to shorten the title to 1
 
 More about that in following sections:
 
-* The section on the [data-sly-use statement](block-statements.md#use) explains everything that can be done with that statement.
+* The section on the [`data-sly-use` statement](block-statements.md#use) explains everything that can be done with that statement.
 * The [Use-API page](use-api.md) provides some information to help choose between writing the logic in Java or in JavaScript.
 * And to detail how to write the logic, the [JavaScript Use-API](use-api-javascript.md) and the [Java Use-API](use-api-java.md) pages should help.
 
@@ -259,7 +242,7 @@ To help with that, the HTML Template Language automatically escapes each variabl
 
 Assuming following `logic.js` file:
 
-```
+```javascript
 use(function () {
     return {
         link:  "#my link's safe",
@@ -321,7 +304,7 @@ This section introduces a few common scenarios and how to best solve them with t
 
 ### Loading Client Libraries {#loading-client-libraries}
 
-In HTL, client libraries are loaded through a helper template provided by AEM, which can be accessed through [`data-sly-use`](block-statements.md#use). Three templates are available in this file, which can be called through [ `data-sly-call`](block-statements.md#template-call):
+In HTL, client libraries are loaded through a helper template provided by AEM, which can be accessed through [`data-sly-use`](block-statements.md#use). Three templates are available in this file, which can be called through [`data-sly-call`](block-statements.md#template-call):
 
 * **`css`** - Loads only the CSS files of the referenced client libraries.
 * **`js`** - Loads only the JavaScript files of the referenced client libraries.
@@ -369,7 +352,7 @@ Following example shows how the logic (which could also be written in Java) can 
 <div data-sly-use.logic="logic.js" data-json="${logic.json}">...</div>
 ```
 
-```
+```javascript
 /* logic.js file: */
 use(function () {
     var myData = {
@@ -385,7 +368,7 @@ use(function () {
 
 From there, it is easy to imagine how a client-side JavaScript can access that attribute and parse again the JSON. This would for instance be the corresponding JavaScript to place into a client library:
 
-```
+```javascript
 var elements = document.querySelectorAll("[data-json]");
 for (var i = 0; i < elements.length; i++) {
     var obj = JSON.parse(elements[i].dataset.json);

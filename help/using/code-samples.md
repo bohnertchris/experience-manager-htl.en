@@ -1,26 +1,16 @@
 ---
 title: Code Samples
-seo-title: Code Samples for AEM HTL
 description: Code samples including the We.Retail Reference Implementation
-seo-description: Code samples including the We.Retail Reference Implementation
-uuid: 4c84532e-1cd0-4faf-b99c-1965557b5d15
-contentOwner: User
-products: SG_EXPERIENCEMANAGER/HTL
-topic-tags: html-template-language
-content-type: reference
-discoiquuid: bea6396e-13c4-4048-9a8a-e5d7c281deba
-mwpw-migration-script-version: 2017-10-12T21 46 58.665-0400
-index: y
-internal: n
-snippet: y
 ---
 
-# Code Samples{#code-samples}
+# Code Samples {#code-samples}
 
 The following are code samples for HTL:
 
-* [We.Retail Reference Implementation](https://helpx.adobe.com/experience-manager/6-4/sites/developing/using/we-retail.html)  
-  An AEM site, fully implemented with HTL.
+* [WKND Tutorial](https://docs.adobe.com/content/help/en/experience-manager-learn/getting-started-wknd-tutorial-develop/overview.html) - This tutorial walks through the implementation of an AEM site for a fictitious lifestyle brand the WKND and covers fundamental topics like project setup, Core Components, Editable Templates, Client-side libraries, and component development with Adobe Experience Manager Sites, all implemented in HTL.
+* [HTL TodoMVC Example](https://github.com/Adobe-Marketing-Cloud/aem-sightly-sample-todomvc) - An AEM + HTL implementation of the famous exercise.
 
-* [HTL TodoMVC Example](https://github.com/Adobe-Marketing-Cloud/aem-sightly-sample-todomvc)  
-  An AEM + HTL implementation of the famous exercise.
+Ask the Expert sessions:
+
+* [Jan 2015 HTL Session (Introduction to HTL)](http://scottsdigitalcommunity.blogspot.ca/2015/01/upcoming-sessions-of-ask-aem-community.html)
+* [March 2016 HTL Session (Advanced component development)](http://scottsdigitalcommunity.blogspot.ca/2016/03/ask-aem-community-experts-deep-dive.html)
