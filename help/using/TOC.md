@@ -1,6 +1,7 @@
 ---
 sub-product: Adobe Experience Manager HTL
 user-guide-title: Adobe Experience Manager HTL
+user-guide-description: Use the HTML Template Language (HTL) to create an enterprise-level web framework.
 ---
 
 # Adobe Experience Manager HTL Help {#using}
