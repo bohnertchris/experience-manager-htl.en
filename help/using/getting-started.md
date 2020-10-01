@@ -104,12 +104,6 @@ and the DIV element could have been annotated with the condition:
 </div>
 ```
 
->[!NOTE]
->
->The SLY element was introduced with AEM 6.1, or HTL 1.1.
->
->Prior to that, the [`data-sly-unwrap`](block-statements.md) attribute had to be used instead.
-
 ### HTL Comments {#htl-comments}
 
 Following example shows on **line 1** an HTL comment, and on **line 2** an HTML comment:
