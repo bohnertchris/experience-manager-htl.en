@@ -5,7 +5,7 @@ description: The HTML Template Language - HTL - Java Use-API enables a HTL file 
 
 # HTL Java Use-API {#htl-java-use-api}
 
-The HTML Template Language (HTL) Java Use-API enables an HTL file to access helper methods in a custom Java class through `data-sly-use`. This allows all complex business logic to be encapsulated in the Java code, while the HTL code deals only with direct markup production.
+The HTML Template Language (HTL) Java Use-API enables an HTL file to access helper methods in a custom Java class through `data-sly-use`. This allows all complex business logic to be encapsulated in the Java code, while the HTL code deals only with direct markup production. 
 
 A Java Use-API object can be a simple POJO, instantiated by a particular implementation through the POJO's default constructor.
 
