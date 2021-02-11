@@ -5,7 +5,7 @@ description: HTML Template Language (HTL) block statements are custom data attri
 
 # HTL Block Statements {#htl-block-statements}
 
-HTML Template Language (HTL) block statements are custom `data` attributes added directly to existing HTML. This allows easy and unobtrusive annotation of a prototype static HTML page, converting it to a functioning dynamic template without breaking the validity of the HTML code.
+HTML Template Language (HTL) block statements are custom `data` attributes added directly to existing HTML. This allows easy and unobtrusive annotation of a prototype static HTML page, converting it to a functioning dynamic template without breaking the validity of the HTML code. 
 
 ## Block Overview {#overview}
 

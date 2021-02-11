@@ -7,7 +7,7 @@ description: The purpose of HTL supported by AEM, is to offer a highly productiv
 
 The purpose of HTML Template Language (HTL), supported by Adobe Experience Manager (AEM), is to offer a highly productive enterprise-level web framework that increases security, and allows HTML developers without Java knowledge to better participate in AEM projects.
 
-The HTML Template Language is the preferred and recommended server-side template system for HTML in AEM. HTL was introduced with AEM 6.0 and takes the place of JSP (JavaServer Pages). For web developers who need to build robust enterprise websites, the HTML Template Language helps to achieve increased security and development efficiency.
+The HTML Template Language is the preferred and recommended server-side template system for HTML in AEM. HTL was introduced with AEM 6.0 and takes the place of JSP (JavaServer Pages). For web developers who need to build robust enterprise websites, the HTML Template Language helps to achieve increased security and development efficiency. 
 
 ## Increased Security {#increased-security}
 

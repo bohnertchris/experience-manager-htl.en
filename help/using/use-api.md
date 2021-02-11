@@ -5,7 +5,7 @@ description: Two APIs are available for HTL - Java Use-API and Javascript Use-AP
 
 # HTL Use-API {#htl-use-api}
 
-HTL encourages separation of concerns by not allowing business logic to mix with markup. Business logic can be implemented through the Use-API.
+HTL encourages separation of concerns by not allowing business logic to mix with markup. Business logic can be implemented through the Use-API. 
 
 The following table gives an overview of the advantages and disadvantages of each API.
 

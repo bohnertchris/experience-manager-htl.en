@@ -5,7 +5,7 @@ description: HTML Template Language - HTL - is Adobe Experience Manager’s pref
 
 # What is HTL? {#what-is-htl}
 
-**Formerly Known As *Sightly***
+**Formerly Known As *Sightly*** 
 
 Updated: August 2016
 
